@@ -1,5 +1,5 @@
 <span ng-switch="$ctrl.endpointType">
-  <span ng-switch-when="1,2,5,6" ng-switch-when-separator="," class="label label-{{ $ctrl.status | endpointstatusbadge }}">
+  <span ng-switch-when="1,2,5,6" ng-switch-when-separator="," class="label" ng-class="$ctrl.statusClass()">
     {{ $ctrl.status === 1 ? 'up' : 'down' }}
   </span>
   <span ng-switch-when="4,7" ng-switch-when-separator="," class="small text-muted">
