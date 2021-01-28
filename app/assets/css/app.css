@@ -1016,3 +1016,7 @@ json-tree .branch-preview {
 .w-full {
   width: 100%;
 }
+
+.line-through {
+  text-decoration: line-through;
+}

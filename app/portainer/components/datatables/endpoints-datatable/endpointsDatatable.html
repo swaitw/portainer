@@ -45,6 +45,9 @@
                 </a>
               </th>
               <th>
+                Status
+              </th>
+              <th>
                 <a ng-click="$ctrl.changeOrderBy('URL')">
                   URL
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'URL' && !$ctrl.state.reverseOrder"></i>
@@ -79,6 +82,9 @@
                   <i ng-class="item.Type | endpointtypeicon" aria-hidden="true" style="margin-right: 2px;"></i>
                   {{ item.Type | endpointtypename }}
                 </span>
+              </td>
+              <td>
+                <endpoint-status-tag status="item.Status" endpoint-type="item.Type" empty-value="-" edge-id="item.EdgeID"></endpoint-status-tag>
               </td>
               <td>
                 <span ng-if="item.Type !== 4">{{ item.URL | stripprotocol }}</span>

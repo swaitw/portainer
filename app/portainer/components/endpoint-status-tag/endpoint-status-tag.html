@@ -1,0 +1,9 @@
+<span ng-switch="$ctrl.endpointType">
+  <span ng-switch-when="1,2,5,6" ng-switch-when-separator="," class="label label-{{ $ctrl.status | endpointstatusbadge }}">
+    {{ $ctrl.status === 1 ? 'up' : 'down' }}
+  </span>
+  <span ng-switch-when="4,7" ng-switch-when-separator="," class="small text-muted">
+    <span><i class="fas" ng-class="$ctrl.edgeId ? 'fa-link' : 'fa-unlink'"></i> <span ng-class="{ 'line-through': !$ctrl.edgeId }">associated</span></span>
+  </span>
+  <span ng-switch-default>{{ ::$ctrl.emptyValue }}</span>
+</span>
