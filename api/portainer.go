@@ -95,6 +95,8 @@ type (
 
 	// DockerHub represents all the required information to connect and use the
 	// Docker Hub
+	//
+	// Deprecated
 	DockerHub struct {
 		// Is authentication against DockerHub enabled
 		Authentication bool `json:"Authentication" example:"true"`
