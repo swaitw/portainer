@@ -1,6 +1,8 @@
 package migrator
 
 import (
+	"fmt"
+
 	"github.com/boltdb/bolt"
 	portainer "github.com/portainer/portainer/api"
 	"github.com/portainer/portainer/api/bolt/dockerhub"
@@ -365,19 +367,12 @@ func (m *Migrator) Migrate() error {
 		}
 	}
 
-	// Portainer CE-2.5.0
-	if m.currentDBVersion < 30 {
-		err := m.updateRegistriesToDB30()
+	// Portainer 2.7.0
+	if m.currentDBVersion < 32 {
+		err := m.migrateVersion32()
 		if err != nil {
-			return err
+			return fmt.Errorf("failed migration to version 32: %w", err)
 		}
-		migrateLog.Info("Successful migration of registries to DB version 30")
-
-		err = m.UpdateDockerhubToDB30()
-		if err != nil {
-			return err
-		}
-		migrateLog.Info("Successful migration of Dockerhub registry to DB version 30")
 	}
 
 	return m.versionService.StoreDBVersion(portainer.DBVersion)
