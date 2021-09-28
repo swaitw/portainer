@@ -52,7 +52,7 @@ func (factory *ProxyFactory) newKubernetesLocalProxy(endpoint *portainer.Endpoin
 
 func (factory *ProxyFactory) newKubernetesEdgeHTTPProxy(endpoint *portainer.Endpoint) (http.Handler, error) {
 	tunnel := factory.reverseTunnelService.GetTunnelDetails(endpoint.ID)
-	endpoint.URL = fmt.Sprintf("http://localhost:%d", tunnel.Port)
+	endpoint.URL = fmt.Sprintf("http://127.0.0.1:%d", tunnel.Port)
 
 	endpointURL, err := url.Parse(endpoint.URL)
 	if err != nil {
